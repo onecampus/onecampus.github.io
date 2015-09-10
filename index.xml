@@ -75,6 +75,11 @@ theme = &amp;quot;hyde&amp;quot;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;themes&lt;/strong&gt;：&lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;https://github.com/spf13/hugoThemes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;syntax higlighting&lt;/strong&gt;：&lt;a href=&#34;http://gohugo.io/extras/highlighting&#34;&gt;http://gohugo.io/extras/highlighting&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;默认的 Server-Side 着色有问题，建议改为 Client-Side Syntax Highlighting，使用 &lt;strong&gt;&lt;a href=&#34;https://highlightjs.org/&#34;&gt;highlight.js&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
