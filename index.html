@@ -60,7 +60,15 @@
 
     <span class="post-date">Thu, Sep 10, 2015</span>
 
-    <pre><code>hugo new site hugo_blog
+    
+
+<h2 id="hugo-download:3e7ca7ba07a85115bf01c033d09ed7f6">Hugo Download</h2>
+
+<p><a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a></p>
+
+<h2 id="hugo-初尝:3e7ca7ba07a85115bf01c033d09ed7f6">Hugo 初尝</h2>
+
+<pre><code>hugo new site hugo_blog
 cd hugo_blog
 
 hugo new first.md
@@ -76,6 +84,43 @@ cd ..
 cd ..
 hugo server -t hyde --watch
 </code></pre>
+
+<h2 id="website-configuration:3e7ca7ba07a85115bf01c033d09ed7f6">Website Configuration</h2>
+
+<p><strong><code>toml</code> or <code>yaml</code> or <code>json</code></strong></p>
+
+<pre><code>baseurl = &quot;http://onecampus.github.io/&quot;
+languageCode = &quot;zh-CN&quot;
+title = &quot;Onecampus T.D.&quot;
+theme = &quot;hyde&quot;
+
+[params]
+	description = &quot;I am the bone of my sword.&quot;
+	#disqusShortname = &quot;spf13&quot;
+
+[[menu.main]]
+	Name = &quot;organization&quot;
+	Url = &quot;https://github.com/onecampus&quot;
+</code></pre>
+
+<ul>
+<li>more about <strong><code>toml</code></strong>：<a href="http://segmentfault.com/a/1190000000477752">http://segmentfault.com/a/1190000000477752</a></li>
+<li>more about <strong><code>configuration</code></strong>：<a href="http://gohugo.io/overview/configuration/">http://gohugo.io/overview/configuration/</a></li>
+</ul>
+
+<h2 id="用-hugo-编写团队博客:3e7ca7ba07a85115bf01c033d09ed7f6">用 Hugo 编写团队博客</h2>
+
+<ol>
+<li><strong>fork</strong></li>
+<li><strong>write articles</strong></li>
+<li><strong>pull requests</strong></li>
+</ol>
+
+<h2 id="other:3e7ca7ba07a85115bf01c033d09ed7f6">Other</h2>
+
+<ul>
+<li><strong>themes</strong>：<a href="https://github.com/spf13/hugoThemes">https://github.com/spf13/hugoThemes</a></li>
+</ul>
 
   </div>
   

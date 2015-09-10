@@ -15,7 +15,15 @@
       <pubDate>Thu, 10 Sep 2015 10:14:34 +0800</pubDate>
       
       <guid>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
-      <description>&lt;pre&gt;&lt;code&gt;hugo new site hugo_blog
+      <description>
+
+&lt;h2 id=&#34;hugo-download:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Hugo Download&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hugo-初尝:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Hugo 初尝&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site hugo_blog
 cd hugo_blog
 
 hugo new first.md
@@ -31,6 +39,43 @@ cd ..
 cd ..
 hugo server -t hyde --watch
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;website-configuration:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Website Configuration&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;toml&lt;/code&gt; or &lt;code&gt;yaml&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://onecampus.github.io/&amp;quot;
+languageCode = &amp;quot;zh-CN&amp;quot;
+title = &amp;quot;Onecampus T.D.&amp;quot;
+theme = &amp;quot;hyde&amp;quot;
+
+[params]
+	description = &amp;quot;I am the bone of my sword.&amp;quot;
+	#disqusShortname = &amp;quot;spf13&amp;quot;
+
+[[menu.main]]
+	Name = &amp;quot;organization&amp;quot;
+	Url = &amp;quot;https://github.com/onecampus&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;more about &lt;strong&gt;&lt;code&gt;toml&lt;/code&gt;&lt;/strong&gt;：&lt;a href=&#34;http://segmentfault.com/a/1190000000477752&#34;&gt;http://segmentfault.com/a/1190000000477752&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;more about &lt;strong&gt;&lt;code&gt;configuration&lt;/code&gt;&lt;/strong&gt;：&lt;a href=&#34;http://gohugo.io/overview/configuration/&#34;&gt;http://gohugo.io/overview/configuration/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;用-hugo-编写团队博客:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;用 Hugo 编写团队博客&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;fork&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;write articles&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pull requests&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;other:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Other&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;themes&lt;/strong&gt;：&lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;https://github.com/spf13/hugoThemes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
