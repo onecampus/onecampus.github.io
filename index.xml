@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Onecampus T.D.</title>
-    <link>http://onecampustd.github.io/</link>
+    <link>http://onecampus.github.io/</link>
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 10 Sep 2015 10:14:34 +0800</lastBuildDate>
-    <atom:link href="http://onecampustd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>hugo 基础教程 by nekocode</title>
-      <link>http://onecampustd.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</link>
+      <link>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</link>
       <pubDate>Thu, 10 Sep 2015 10:14:34 +0800</pubDate>
       
-      <guid>http://onecampustd.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
+      <guid>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
       <description>&lt;pre&gt;&lt;code&gt;hugo new site hugo_blog
 cd hugo_blog
 
