@@ -11,10 +11,10 @@
     
     <item>
       <title>hugo 基础教程 by nekocode</title>
-      <link>http://onecampustd.github.io/first/</link>
+      <link>http://onecampustd.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</link>
       <pubDate>Thu, 10 Sep 2015 10:14:34 +0800</pubDate>
       
-      <guid>http://onecampustd.github.io/first/</guid>
+      <guid>http://onecampustd.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
       <description>&lt;pre&gt;&lt;code&gt;hugo new site hugo_blog
 cd hugo_blog
 
