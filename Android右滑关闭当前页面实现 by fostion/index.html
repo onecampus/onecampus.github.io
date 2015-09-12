@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> Onecampus T.D. &middot; Onecampus T.D. </title>
+  <title> Android右滑关闭当前页面实现 by fostion &middot; Onecampus T.D. </title>
 
   
   <link rel="stylesheet" href="http://onecampus.github.io/css/poole.css">
@@ -21,16 +21,15 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="http://onecampus.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
+  <link href="" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
   
   <link rel="stylesheet" href="/highlight/styles/androidstudio.css">
   <script src="/highlight/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
-<body class="">
-
-<div class="sidebar">
+	<body class="">
+		<div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="http://onecampus.github.io/"><h1>Onecampus T.D.</h1></a>
@@ -51,20 +50,11 @@
 </div>
 
 
-    <div class="content container">
-<div class="posts">
-
-      
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/">
-        Android右滑关闭当前页面实现 by fostion
-      </a>
-    </h1>
-
-    <span class="post-date">Fri, Sep 11, 2015</span>
-
-    
+		<div class="content container">
+			<div class="post">
+			 	<h1>Android右滑关闭当前页面实现 by fostion</h1>
+			  <span class="post-date">Fri, Sep 11, 2015</span>
+			      
 
 <h2 id="viewdraghelper介绍:12e2a8ca259c2875a3b1a12e6233ec76">ViewDragHelper介绍</h2>
 
@@ -220,88 +210,10 @@
 <p><img src="../fostion_result1.png" alt="xiaoguotupian" />
 </p>
 
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/">
-        hugo 基础教程 by nekocode
-      </a>
-    </h1>
+			</div>
 
-    <span class="post-date">Thu, Sep 10, 2015</span>
-
-    
-
-<h2 id="hugo-download:3e7ca7ba07a85115bf01c033d09ed7f6">Hugo Download</h2>
-
-<p><a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a></p>
-
-<h2 id="hugo-初尝:3e7ca7ba07a85115bf01c033d09ed7f6">Hugo 初尝</h2>
-
-<pre><code>hugo new site hugo_blog
-cd hugo_blog
-
-hugo new first.md
-hugo undraft content/first.md
-
-mkdir themes
-cd themes
-git clone https://github.com/spf13/hyde.git
-cd hyde
-rm -rf .git
-
-cd ..
-cd ..
-hugo server -t hyde --watch
-</code></pre>
-
-<h2 id="website-configuration:3e7ca7ba07a85115bf01c033d09ed7f6">Website Configuration</h2>
-
-<p><strong><code>toml</code> or <code>yaml</code> or <code>json</code></strong></p>
-
-<pre><code>baseurl = &quot;http://onecampus.github.io/&quot;
-languageCode = &quot;zh-CN&quot;
-title = &quot;Onecampus T.D.&quot;
-theme = &quot;hyde&quot;
-
-[params]
-	description = &quot;I am the bone of my sword.&quot;
-	#disqusShortname = &quot;spf13&quot;
-
-[[menu.main]]
-	Name = &quot;organization&quot;
-	Url = &quot;https://github.com/onecampus&quot;
-</code></pre>
-
-<ul>
-<li>more about <strong><code>toml</code></strong>：<a href="http://segmentfault.com/a/1190000000477752">http://segmentfault.com/a/1190000000477752</a></li>
-<li>more about <strong><code>configuration</code></strong>：<a href="http://gohugo.io/overview/configuration/">http://gohugo.io/overview/configuration/</a></li>
-</ul>
-
-<h2 id="用-hugo-编写团队博客:3e7ca7ba07a85115bf01c033d09ed7f6">用 Hugo 编写团队博客</h2>
-
-<ol>
-<li><strong>fork</strong> <a href="https://github.com/onecampus/onecampus_blog">https://github.com/onecampus/onecampus_blog</a></li>
-<li><strong>write articles</strong></li>
-<li><strong>pull requests</strong></li>
-</ol>
-
-<h2 id="other:3e7ca7ba07a85115bf01c033d09ed7f6">Other</h2>
-
-<ul>
-<li><strong>themes</strong>：<a href="https://github.com/spf13/hugoThemes">https://github.com/spf13/hugoThemes</a></li>
-<li><strong>syntax higlighting</strong>：<a href="http://gohugo.io/extras/highlighting">http://gohugo.io/extras/highlighting</a>
-
-<ul>
-<li>默认的 Server-Side 着色有问题，建议改为 Client-Side Syntax Highlighting，使用 <strong><a href="https://highlightjs.org/">highlight.js</a></strong></li>
-</ul></li>
-</ul>
-
-  </div>
-  
-</div>
-</div>
+			
+		</div>
 
   </body>
 </html>
