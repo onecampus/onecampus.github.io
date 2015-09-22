@@ -1,0 +1,88 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.14" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> ngrok 简单服务器搭建 by june &middot; Onecampus T.D. </title>
+
+  
+  <link rel="stylesheet" href="http://onecampus.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/syntax.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
+  
+  <link rel="stylesheet" href="/highlight/styles/androidstudio.css">
+  <script src="/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://onecampus.github.io/"><h1>Onecampus T.D.</h1></a>
+      <p class="lead">
+       I am the bone of my sword. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="https://github.com/onecampus"> Organization </a></li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>ngrok 简单服务器搭建 by june</h1>
+			  <span class="post-date">Sun, Sep 20, 2015</span>
+			      
+
+<h2 id="ngrok介绍:4f3ca5663e6fe63f7d854ee2feb8a06c">ngrok介绍</h2>
+
+<pre><code>  ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放(来自百度百科)。通过ngrok,我们可以在外网轻松访问本机的资源(其中一个非常重要的功能)。在微信公众号等的开发中，ngrok将大大节省开发者的调试，测试时间和成本,可谓神器!
+  
+</code></pre>
+
+<h2 id="mac-搭建ngrok服务器:4f3ca5663e6fe63f7d854ee2feb8a06c">Mac 搭建ngrok服务器</h2>
+
+<pre><code>1.下载ngrok,地址：https://ngrok.com/download。 请注意:下载官方1.x客户端，官方目前并不准备开放2.0客户端的第三方服务器支持。安装了brew的用户可直接 brew install ngrok,中途会提示安装go,选择是就行了，简单粗暴.
+
+2.去官网注册一个账号并获取密钥，地址：https://ngrok.com/
+
+3.运行$ ngrok -authtoken YOUR_TOKEN_HERE 80（这是一个默认的配置，默认访问：http://127.0.0.1）ngrok -authtoken只需要运行一次，以后都不需要再次运行, 端口可以随便改
+
+4.配置一级域名：$ ngrok -subdomain = june(任何你喜欢的英文) 80
+
+5.由于ngrok默认是部署在国外的服务器，很多时候都不能访问或者访问很慢，因此，我们可以使用部署在国内的服务器， 详情请访问:http://www.tunnel.mobi/
+</code></pre>
+
+<h2 id="更多信息:4f3ca5663e6fe63f7d854ee2feb8a06c">更多信息</h2>
+
+<p>访问 <a href="http://www.tunnel.mobi/">http://www.tunnel.mobi/</a>, <a href="https://ngrok.com/docs">https://ngrok.com/docs</a></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
