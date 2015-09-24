@@ -19,26 +19,25 @@
 
 &lt;h2 id=&#34;ngrok介绍:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;ngrok介绍&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;  ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放(来自百度百科)。通过ngrok,我们可以在外网轻松访问本机的资源(其中一个非常重要的功能)。在微信公众号等的开发中，ngrok将大大节省开发者的调试，测试时间和成本,可谓神器!
-  
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放(来自百度百科)。通过ngrok,我们可以在外网轻松访问本机的资源(其中一个非常重要的功能)。在微信公众号等的开发中，ngrok将大大节省开发者的调试，测试时间和成本,可谓神器!&lt;/p&gt;
 
 &lt;h2 id=&#34;mac-搭建ngrok服务器:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;Mac 搭建ngrok服务器&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;1.下载ngrok,地址：https://ngrok.com/download。 请注意:下载官方1.x客户端，官方目前并不准备开放2.0客户端的第三方服务器支持。安装了brew的用户可直接 brew install ngrok,中途会提示安装go,选择是就行了，简单粗暴.
+&lt;p&gt;1.下载ngrok,地址：&lt;a href=&#34;https://ngrok.com/download。&#34;&gt;https://ngrok.com/download。&lt;/a&gt; 请注意:下载官方1.x客户端，官方目前并不准备开放2.0客户端的第三方服务器支持。安装了brew的用户可直接 brew install ngrok,中途会提示安装go,选择是就行了，简单粗暴.&lt;/p&gt;
 
-2.去官网注册一个账号并获取密钥，地址：https://ngrok.com/
+&lt;p&gt;2.去官网注册一个账号并获取密钥，地址：&lt;a href=&#34;https://ngrok.com/&#34;&gt;https://ngrok.com/&lt;/a&gt;&lt;/p&gt;
 
-3.运行$ ngrok -authtoken YOUR_TOKEN_HERE 80（这是一个默认的配置，默认访问：http://127.0.0.1）ngrok -authtoken只需要运行一次，以后都不需要再次运行, 端口可以随便改
+&lt;p&gt;3.运行$ ngrok -authtoken YOUR_TOKEN_HERE 80（这是一个默认的配置，默认访问：&lt;a href=&#34;http://127.0.0.1）ngrok&#34;&gt;http://127.0.0.1）ngrok&lt;/a&gt; -authtoken只需要运行一次，以后都不需要再次运行, 端口可以随便改&lt;/p&gt;
 
-4.配置一级域名：$ ngrok -subdomain = june(任何你喜欢的英文) 80
+&lt;p&gt;4.配置一级域名：$ ngrok -subdomain = june(任何你喜欢的英文) 80&lt;/p&gt;
 
-5.由于ngrok默认是部署在国外的服务器，很多时候都不能访问或者访问很慢，因此，我们可以使用部署在国内的服务器， 详情请访问:http://www.tunnel.mobi/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5.由于ngrok默认是部署在国外的服务器，很多时候都不能访问或者访问很慢，因此，我们可以使用部署在国内的服务器， 详情请访问:&lt;a href=&#34;http://www.tunnel.mobi/&#34;&gt;http://www.tunnel.mobi/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;更多信息:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;更多信息&lt;/h2&gt;
 
 &lt;p&gt;访问 &lt;a href=&#34;http://www.tunnel.mobi/&#34;&gt;http://www.tunnel.mobi/&lt;/a&gt;, &lt;a href=&#34;https://ngrok.com/docs&#34;&gt;https://ngrok.com/docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;补充-由于-官方已经停止发布ngrok1-x版本-官网只能获取2-x-而并不能获取1-x的token-解决方法-待续:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;补充： 由于 官方已经停止发布ngrok1.x版本，官网只能获取2.x,而并不能获取1.x的token&amp;hellip;=.=, 解决方法，待续。。。&lt;/h3&gt;
 </description>
     </item>
     
@@ -239,21 +238,21 @@ hugo server -t hyde --watch
 
 &lt;h2 id=&#34;website-configuration:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Website Configuration&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;toml&lt;/code&gt; or &lt;code&gt;yaml&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;**&lt;code&gt;toml&lt;/code&gt; or &lt;code&gt;yaml&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;**
+```
+baseurl = &amp;ldquo;&lt;a href=&#34;http://onecampus.github.io/&amp;quot;&#34;&gt;http://onecampus.github.io/&amp;quot;&lt;/a&gt;
+languageCode = &amp;ldquo;zh-CN&amp;rdquo;
+title = &amp;ldquo;Onecampus T.D.&amp;rdquo;
+theme = &amp;ldquo;hyde&amp;rdquo;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://onecampus.github.io/&amp;quot;
-languageCode = &amp;quot;zh-CN&amp;quot;
-title = &amp;quot;Onecampus T.D.&amp;quot;
-theme = &amp;quot;hyde&amp;quot;
+&lt;p&gt;[params]
+    description = &amp;ldquo;I am the bone of my sword.&amp;rdquo;
+    #disqusShortname = &amp;ldquo;spf13&amp;rdquo;&lt;/p&gt;
 
-[params]
-	description = &amp;quot;I am the bone of my sword.&amp;quot;
-	#disqusShortname = &amp;quot;spf13&amp;quot;
-
-[[menu.main]]
-	Name = &amp;quot;organization&amp;quot;
-	Url = &amp;quot;https://github.com/onecampus&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[[menu.main]]
+    Name = &amp;ldquo;organization&amp;rdquo;
+    Url = &amp;ldquo;&lt;a href=&#34;https://github.com/onecampus&amp;quot;&#34;&gt;https://github.com/onecampus&amp;quot;&lt;/a&gt;
+```&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;more about &lt;strong&gt;&lt;code&gt;toml&lt;/code&gt;&lt;/strong&gt;：&lt;a href=&#34;http://segmentfault.com/a/1190000000477752&#34;&gt;http://segmentfault.com/a/1190000000477752&lt;/a&gt;&lt;/li&gt;
