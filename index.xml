@@ -301,21 +301,21 @@ hugo server -t hyde --watch
 
 &lt;h2 id=&#34;website-configuration:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Website Configuration&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;toml&lt;/code&gt; or &lt;code&gt;yaml&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;**&lt;code&gt;toml&lt;/code&gt; or &lt;code&gt;yaml&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;**
+```
+baseurl = &amp;ldquo;&lt;a href=&#34;http://onecampus.github.io/&amp;quot;&#34;&gt;http://onecampus.github.io/&amp;quot;&lt;/a&gt;
+languageCode = &amp;ldquo;zh-CN&amp;rdquo;
+title = &amp;ldquo;Onecampus T.D.&amp;rdquo;
+theme = &amp;ldquo;hyde&amp;rdquo;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;baseurl = &amp;quot;http://onecampus.github.io/&amp;quot;
-languageCode = &amp;quot;zh-CN&amp;quot;
-title = &amp;quot;Onecampus T.D.&amp;quot;
-theme = &amp;quot;hyde&amp;quot;
+&lt;p&gt;[params]
+    description = &amp;ldquo;I am the bone of my sword.&amp;rdquo;
+    #disqusShortname = &amp;ldquo;spf13&amp;rdquo;&lt;/p&gt;
 
-[params]
-	description = &amp;quot;I am the bone of my sword.&amp;quot;
-	#disqusShortname = &amp;quot;spf13&amp;quot;
-
-[[menu.main]]
-	Name = &amp;quot;organization&amp;quot;
-	Url = &amp;quot;https://github.com/onecampus&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[[menu.main]]
+    Name = &amp;ldquo;organization&amp;rdquo;
+    Url = &amp;ldquo;&lt;a href=&#34;https://github.com/onecampus&amp;quot;&#34;&gt;https://github.com/onecampus&amp;quot;&lt;/a&gt;
+```&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;more about &lt;strong&gt;&lt;code&gt;toml&lt;/code&gt;&lt;/strong&gt;：&lt;a href=&#34;http://segmentfault.com/a/1190000000477752&#34;&gt;http://segmentfault.com/a/1190000000477752&lt;/a&gt;&lt;/li&gt;
