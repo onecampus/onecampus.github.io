@@ -6,8 +6,71 @@
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Sep 2015 10:14:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2015 15:34:00 +0800</lastBuildDate>
     <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Centos下搭建DNS服务器 by yunjiang</title>
+      <link>http://onecampus.github.io/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</link>
+      <pubDate>Tue, 29 Sep 2015 15:34:00 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</guid>
+      <description>
+
+&lt;h3 id=&#34;1-yum-y-install-bind-安装bind:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;1.yum -y install bind 安装bind&lt;/h3&gt;
+
+&lt;h3 id=&#34;2-vim-etc-named-conf-修改named-conf文件的options如下:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;2.vim /etc/named.conf 修改named.conf文件的options如下:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;options {
+        listen-on port 53 { any; };
+        //listen-on-v6 port 53 { ::1; };
+        directory       &amp;quot;/var/named&amp;quot;;
+        dump-file       &amp;quot;/var/named/data/cache_dump.db&amp;quot;;
+        statistics-file &amp;quot;/var/named/data/named_stats.txt&amp;quot;;
+        memstatistics-file &amp;quot;/var/named/data/named_mem_stats.txt&amp;quot;;
+        allow-query     { any; };
+        recursion yes;
+
+        dnssec-enable yes;
+        dnssec-validation yes;
+        dnssec-lookaside auto;
+
+        /* Path to ISC DLV key */
+        bindkeys-file &amp;quot;/etc/named.iscdlv.key&amp;quot;;
+
+        managed-keys-directory &amp;quot;/var/named/dynamic&amp;quot;;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-vim-etc-named-rfc1912-zones-在named-rfc1912-zones最下面添加:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;3.vim /etc/named.rfc1912.zones，在named.rfc1912.zones最下面添加&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;zone &amp;quot;ags.com&amp;quot; IN {
+        type master;
+        file &amp;quot;named.ags.com&amp;quot;;
+        allow-update {none;};
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-vim-var-named-named-ags-com-添加named-ags-com文件-文件内容如下:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;4.vim /var/named/named.ags.com 添加named.ags.com文件，文件内容如下：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$TTL 1D
+@     IN SOA ags.com rname.invalid. (
+                         0    ;  serial 
+                        1D    ;  refresh
+                        1H    ;  retry
+                        1W    ;  expire
+                        3H )   ;  minimum
+      NS   @
+      A    127.0.0.1
+      AAAA ::1
+CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;如此设置之后-访问的域名就会固定为-cyydmke-ags-com:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;如此设置之后，访问的域名就会固定为 CYYDMKE.ags.com&lt;/h5&gt;
+
+&lt;h3 id=&#34;5-配置路由器dns地址-找到dhcp服务器-修改首选dns服务器:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;5.配置路由器DNS地址（找到DHCP服务器，修改首选DNS服务器）&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>ngrok 简单服务器搭建 by june</title>
@@ -19,26 +82,25 @@
 
 &lt;h2 id=&#34;ngrok介绍:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;ngrok介绍&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;  ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放(来自百度百科)。通过ngrok,我们可以在外网轻松访问本机的资源(其中一个非常重要的功能)。在微信公众号等的开发中，ngrok将大大节省开发者的调试，测试时间和成本,可谓神器!
-  
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放(来自百度百科)。通过ngrok,我们可以在外网轻松访问本机的资源(其中一个非常重要的功能)。在微信公众号等的开发中，ngrok将大大节省开发者的调试，测试时间和成本,可谓神器!&lt;/p&gt;
 
 &lt;h2 id=&#34;mac-搭建ngrok服务器:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;Mac 搭建ngrok服务器&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;1.下载ngrok,地址：https://ngrok.com/download。 请注意:下载官方1.x客户端，官方目前并不准备开放2.0客户端的第三方服务器支持。安装了brew的用户可直接 brew install ngrok,中途会提示安装go,选择是就行了，简单粗暴.
+&lt;p&gt;1.下载ngrok,地址：&lt;a href=&#34;https://ngrok.com/download。&#34;&gt;https://ngrok.com/download。&lt;/a&gt; 请注意:下载官方1.x客户端，官方目前并不准备开放2.0客户端的第三方服务器支持。安装了brew的用户可直接 brew install ngrok,中途会提示安装go,选择是就行了，简单粗暴.&lt;/p&gt;
 
-2.去官网注册一个账号并获取密钥，地址：https://ngrok.com/
+&lt;p&gt;2.去官网注册一个账号并获取密钥，地址：&lt;a href=&#34;https://ngrok.com/&#34;&gt;https://ngrok.com/&lt;/a&gt;&lt;/p&gt;
 
-3.运行$ ngrok -authtoken YOUR_TOKEN_HERE 80（这是一个默认的配置，默认访问：http://127.0.0.1）ngrok -authtoken只需要运行一次，以后都不需要再次运行, 端口可以随便改
+&lt;p&gt;3.运行$ ngrok -authtoken YOUR_TOKEN_HERE 80（这是一个默认的配置，默认访问：&lt;a href=&#34;http://127.0.0.1）ngrok&#34;&gt;http://127.0.0.1）ngrok&lt;/a&gt; -authtoken只需要运行一次，以后都不需要再次运行, 端口可以随便改&lt;/p&gt;
 
-4.配置一级域名：$ ngrok -subdomain = june(任何你喜欢的英文) 80
+&lt;p&gt;4.配置一级域名：$ ngrok -subdomain = june(任何你喜欢的英文) 80&lt;/p&gt;
 
-5.由于ngrok默认是部署在国外的服务器，很多时候都不能访问或者访问很慢，因此，我们可以使用部署在国内的服务器， 详情请访问:http://www.tunnel.mobi/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5.由于ngrok默认是部署在国外的服务器，很多时候都不能访问或者访问很慢，因此，我们可以使用部署在国内的服务器， 详情请访问:&lt;a href=&#34;http://www.tunnel.mobi/&#34;&gt;http://www.tunnel.mobi/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;更多信息:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;更多信息&lt;/h2&gt;
 
 &lt;p&gt;访问 &lt;a href=&#34;http://www.tunnel.mobi/&#34;&gt;http://www.tunnel.mobi/&lt;/a&gt;, &lt;a href=&#34;https://ngrok.com/docs&#34;&gt;https://ngrok.com/docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;补充-由于-官方已经停止发布ngrok1-x版本-官网只能获取2-x-而并不能获取1-x的token-解决方法-待续:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;补充： 由于 官方已经停止发布ngrok1.x版本，官网只能获取2.x,而并不能获取1.x的token&amp;hellip;=.=, 解决方法，待续。。。&lt;/h3&gt;
 </description>
     </item>
     

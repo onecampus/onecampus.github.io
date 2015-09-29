@@ -1,0 +1,118 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.14" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Centos下搭建DNS服务器 by yunjiang &middot; Onecampus T.D. </title>
+
+  
+  <link rel="stylesheet" href="http://onecampus.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/syntax.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
+  
+  <link rel="stylesheet" href="/highlight/styles/androidstudio.css">
+  <script src="/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://onecampus.github.io/"><h1>Onecampus T.D.</h1></a>
+      <p class="lead">
+       I am the bone of my sword. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="https://github.com/onecampus"> Organization </a></li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Centos下搭建DNS服务器 by yunjiang</h1>
+			  <span class="post-date">Tue, Sep 29, 2015</span>
+			      
+
+<h3 id="1-yum-y-install-bind-安装bind:2966bf4a81aa2769fb12d1b7246579a7">1.yum -y install bind 安装bind</h3>
+
+<h3 id="2-vim-etc-named-conf-修改named-conf文件的options如下:2966bf4a81aa2769fb12d1b7246579a7">2.vim /etc/named.conf 修改named.conf文件的options如下:</h3>
+
+<pre><code>options {
+        listen-on port 53 { any; };
+        //listen-on-v6 port 53 { ::1; };
+        directory       &quot;/var/named&quot;;
+        dump-file       &quot;/var/named/data/cache_dump.db&quot;;
+        statistics-file &quot;/var/named/data/named_stats.txt&quot;;
+        memstatistics-file &quot;/var/named/data/named_mem_stats.txt&quot;;
+        allow-query     { any; };
+        recursion yes;
+
+        dnssec-enable yes;
+        dnssec-validation yes;
+        dnssec-lookaside auto;
+
+        /* Path to ISC DLV key */
+        bindkeys-file &quot;/etc/named.iscdlv.key&quot;;
+
+        managed-keys-directory &quot;/var/named/dynamic&quot;;
+};
+</code></pre>
+
+<h3 id="3-vim-etc-named-rfc1912-zones-在named-rfc1912-zones最下面添加:2966bf4a81aa2769fb12d1b7246579a7">3.vim /etc/named.rfc1912.zones，在named.rfc1912.zones最下面添加</h3>
+
+<pre><code>zone &quot;ags.com&quot; IN {
+        type master;
+        file &quot;named.ags.com&quot;;
+        allow-update {none;};
+};
+</code></pre>
+
+<h3 id="4-vim-var-named-named-ags-com-添加named-ags-com文件-文件内容如下:2966bf4a81aa2769fb12d1b7246579a7">4.vim /var/named/named.ags.com 添加named.ags.com文件，文件内容如下：</h3>
+
+<pre><code>$TTL 1D
+@     IN SOA ags.com rname.invalid. (
+                         0    ;  serial 
+                        1D    ;  refresh
+                        1H    ;  retry
+                        1W    ;  expire
+                        3H )   ;  minimum
+      NS   @
+      A    127.0.0.1
+      AAAA ::1
+CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
+</code></pre>
+
+<h5 id="如此设置之后-访问的域名就会固定为-cyydmke-ags-com:2966bf4a81aa2769fb12d1b7246579a7">如此设置之后，访问的域名就会固定为 CYYDMKE.ags.com</h5>
+
+<h3 id="5-配置路由器dns地址-找到dhcp服务器-修改首选dns服务器:2966bf4a81aa2769fb12d1b7246579a7">5.配置路由器DNS地址（找到DHCP服务器，修改首选DNS服务器）</h3>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
