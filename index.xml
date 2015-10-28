@@ -6,8 +6,147 @@
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 29 Sep 2015 15:34:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2015 15:55:29 +0800</lastBuildDate>
     <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>网页弹性按钮(纯css3) by zhou</title>
+      <link>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</link>
+      <pubDate>Sun, 25 Oct 2015 15:55:29 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</guid>
+      <description>
+
+&lt;h2 id=&#34;网页中弹性按钮设计-纯css:e2661edcf3ad09a929f3c6c9ad328c35&#34;&gt;网页中弹性按钮设计(纯CSS)&lt;/h2&gt;
+
+&lt;p&gt;效果如下：
+&lt;img src=&#34;../btn.gif&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h4 id=&#34;思路:e2661edcf3ad09a929f3c6c9ad328c35&#34;&gt;思路&lt;/h4&gt;
+
+&lt;p&gt;其中包含2个动效，第一个是按钮中心的颜色扩散，第二个是按钮弹性收缩。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;第一个颜色扩散：按钮分为了两层，第一层是按钮本身，第二层是按钮的为元素:before，&lt;strong&gt;注意按钮before是这个效果的重点，通过hover动作触发按钮before层的扩散&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;第二个弹性收缩：需要使用@keyframes设计动画的效果。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;两个动画独立完成后，重叠在一起的话，需要调整动画的时间及效果。&lt;/p&gt;
+
+&lt;h4 id=&#34;代码分析:e2661edcf3ad09a929f3c6c9ad328c35&#34;&gt;代码分析&lt;/h4&gt;
+
+&lt;p&gt;html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;bottle&amp;quot;&amp;gt;
+  &amp;lt;a class=&amp;quot;hvr-rectangle-out hvr-pop&amp;quot; href=&amp;quot;javascript:void(0)&amp;quot;&amp;gt;1&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;bottle&amp;quot;&amp;gt;
+  &amp;lt;a class=&amp;quot;hvr-rectangle-out hvr-pop&amp;quot; href=&amp;quot;javascript:void(0)&amp;quot;&amp;gt;2&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;bottle&amp;quot;&amp;gt;
+  &amp;lt;a class=&amp;quot;hvr-rectangle-out hvr-pop&amp;quot; href=&amp;quot;javascript:void(0)&amp;quot;&amp;gt;3&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;bottle&amp;quot;&amp;gt;
+  &amp;lt;a class=&amp;quot;hvr-rectangle-out hvr-pop&amp;quot; href=&amp;quot;javascript:void(0)&amp;quot;&amp;gt;4&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;bottle&amp;quot;&amp;gt;
+  &amp;lt;a class=&amp;quot;hvr-rectangle-out hvr-pop&amp;quot; href=&amp;quot;javascript:void(0)&amp;quot;&amp;gt;5&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;css&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;/*按钮基础样式*/
+.bottle {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.bottle a {
+  text-decoration: none;
+  color: gray;
+}
+/*颜色扩散动效部分*/
+.hvr-rectangle-out {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  position: relative;
+  background-color: #fafafa;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+/*:before这个是颜色扩散动效的重点*/
+.hvr-rectangle-out:before {
+  content: &amp;quot;&amp;quot;;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(0.5);
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+.hvr-rectangle-out:hover,
+.hvr-rectangle-out:focus,
+.hvr-rectangle-out:active {
+  color: white; /*颜色扩散时候，字体改变颜色*/
+}
+.hvr-rectangle-out:hover:before,
+.hvr-rectangle-out:focus:before,
+.hvr-rectangle-out:active:before {
+  background: #2098d1;
+  transform: scale(1); /*hover触发:before层的扩散*/
+}
+
+/*弹性收缩动效部分*/
+/*使用keyframes定义弹性动画
+  1是原来的比例扩散到1.05倍的比例，再缩回1倍原来的比例*/
+@keyframes hvr-pop {
+  25% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.hvr-pop {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+.hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
+  animation-name: hvr-pop;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Centos下搭建DNS服务器 by yunjiang</title>
@@ -69,6 +208,55 @@ CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
 &lt;h5 id=&#34;如此设置之后-访问的域名就会固定为-cyydmke-ags-com:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;如此设置之后，访问的域名就会固定为 CYYDMKE.ags.com&lt;/h5&gt;
 
 &lt;h3 id=&#34;5-配置路由器dns地址-找到dhcp服务器-修改首选dns服务器:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;5.配置路由器DNS地址（找到DHCP服务器，修改首选DNS服务器）&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>栅格化设计 by mj</title>
+      <link>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Tue, 29 Sep 2015 15:34:00 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;栅格化设计-01.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-02.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-03.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-04.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-05.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-06.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-07.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-08.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-09.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-10.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-11.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-12.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-13.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-14.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-15.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-16.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-17.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-18.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-19.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-20.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
 </description>
     </item>
     
