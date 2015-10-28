@@ -497,12 +497,12 @@ title = &amp;quot;Onecampus T.D.&amp;quot;
 theme = &amp;quot;hyde&amp;quot;
 
 [params]
-	description = &amp;quot;I am the bone of my sword.&amp;quot;
-	#disqusShortname = &amp;quot;spf13&amp;quot;
+    description = &amp;quot;I am the bone of my sword.&amp;quot;
+    #disqusShortname = &amp;quot;spf13&amp;quot;
 
 [[menu.main]]
-	Name = &amp;quot;organization&amp;quot;
-	Url = &amp;quot;https://github.com/onecampus&amp;quot;
+    Name = &amp;quot;organization&amp;quot;
+    Url = &amp;quot;https://github.com/onecampus&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
