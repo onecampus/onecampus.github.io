@@ -2,19 +2,68 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Onecampus T.D.</title>
-    <link>http://onecampus.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Oct 2015 15:55:29 +0800</lastBuildDate>
-    <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2015 15:34:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>栅格化设计 by mj</title>
+      <link>http://localhost:1313/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Wed, 28 Oct 2015 15:34:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;栅格化设计-01.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-02.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-03.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-04.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-05.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-06.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-07.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-08.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-09.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-10.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-11.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-12.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-13.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-14.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-15.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-16.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-17.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-18.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-19.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;br /&gt;
+&lt;img src=&#34;栅格化设计-20.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>网页弹性按钮(纯css3) by zhou</title>
-      <link>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</link>
+      <link>http://localhost:1313/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</link>
       <pubDate>Sun, 25 Oct 2015 15:55:29 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</guid>
+      <guid>http://localhost:1313/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</guid>
       <description>
 
 &lt;h2 id=&#34;网页中弹性按钮设计-纯css:e2661edcf3ad09a929f3c6c9ad328c35&#34;&gt;网页中弹性按钮设计(纯CSS)&lt;/h2&gt;
@@ -150,10 +199,10 @@
     
     <item>
       <title>Centos下搭建DNS服务器 by yunjiang</title>
-      <link>http://onecampus.github.io/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</link>
+      <link>http://localhost:1313/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</link>
       <pubDate>Tue, 29 Sep 2015 15:34:00 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</guid>
+      <guid>http://localhost:1313/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</guid>
       <description>
 
 &lt;h3 id=&#34;1-yum-y-install-bind-安装bind:2966bf4a81aa2769fb12d1b7246579a7&#34;&gt;1.yum -y install bind 安装bind&lt;/h3&gt;
@@ -212,60 +261,11 @@ CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
     </item>
     
     <item>
-      <title>栅格化设计 by mj</title>
-      <link>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</link>
-      <pubDate>Tue, 29 Sep 2015 15:34:00 +0800</pubDate>
-      
-      <guid>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;栅格化设计-01.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-02.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-03.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-04.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-05.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-06.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-07.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-08.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-09.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-10.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-11.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-12.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-13.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-14.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-15.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-16.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-17.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-18.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-19.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;br /&gt;
-&lt;img src=&#34;栅格化设计-20.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>ngrok 简单服务器搭建 by june</title>
-      <link>http://onecampus.github.io/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</link>
+      <link>http://localhost:1313/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</link>
       <pubDate>Sun, 20 Sep 2015 10:14:34 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</guid>
+      <guid>http://localhost:1313/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</guid>
       <description>
 
 &lt;h2 id=&#34;ngrok介绍:4f3ca5663e6fe63f7d854ee2feb8a06c&#34;&gt;ngrok介绍&lt;/h2&gt;
@@ -294,10 +294,10 @@ CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
     
     <item>
       <title>Android右滑关闭当前页面实现 by fostion</title>
-      <link>http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</link>
+      <link>http://localhost:1313/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</link>
       <pubDate>Fri, 11 Sep 2015 16:00:16 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</guid>
+      <guid>http://localhost:1313/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</guid>
       <description>
 
 &lt;h2 id=&#34;viewdraghelper介绍:12e2a8ca259c2875a3b1a12e6233ec76&#34;&gt;ViewDragHelper介绍&lt;/h2&gt;
@@ -458,10 +458,10 @@ CYYDMKE   IN A 192.168.1.10  //这里的ip要改为本机ip
     
     <item>
       <title>hugo 基础教程 by nekocode</title>
-      <link>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</link>
+      <link>http://localhost:1313/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</link>
       <pubDate>Thu, 10 Sep 2015 10:14:34 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
+      <guid>http://localhost:1313/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</guid>
       <description>
 
 &lt;h2 id=&#34;hugo-download:3e7ca7ba07a85115bf01c033d09ed7f6&#34;&gt;Hugo Download&lt;/h2&gt;
@@ -497,12 +497,12 @@ title = &amp;quot;Onecampus T.D.&amp;quot;
 theme = &amp;quot;hyde&amp;quot;
 
 [params]
-    description = &amp;quot;I am the bone of my sword.&amp;quot;
-    #disqusShortname = &amp;quot;spf13&amp;quot;
+	description = &amp;quot;I am the bone of my sword.&amp;quot;
+	#disqusShortname = &amp;quot;spf13&amp;quot;
 
 [[menu.main]]
-    Name = &amp;quot;organization&amp;quot;
-    Url = &amp;quot;https://github.com/onecampus&amp;quot;
+	Name = &amp;quot;organization&amp;quot;
+	Url = &amp;quot;https://github.com/onecampus&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;

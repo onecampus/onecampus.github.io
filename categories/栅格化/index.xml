@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>栅格化 on Onecampus T.D.</title>
-    <link>http://onecampus.github.io/categories/%E6%A0%85%E6%A0%BC%E5%8C%96/</link>
+    <link>http://localhost:1313/categories/%E6%A0%85%E6%A0%BC%E5%8C%96/</link>
     <description>Recent content in 栅格化 on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 29 Sep 2015 15:34:00 +0800</lastBuildDate>
-    <atom:link href="http://onecampus.github.io/categories/%E6%A0%85%E6%A0%BC%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2015 15:34:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%A0%85%E6%A0%BC%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>栅格化设计 by mj</title>
-      <link>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</link>
-      <pubDate>Tue, 29 Sep 2015 15:34:00 +0800</pubDate>
+      <link>http://localhost:1313/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Wed, 28 Oct 2015 15:34:00 +0800</pubDate>
       
-      <guid>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>http://localhost:1313/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;栅格化设计-01.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;br /&gt;
 &lt;img src=&#34;栅格化设计-02.jpg&#34; alt=&#34;&#34; /&gt;
