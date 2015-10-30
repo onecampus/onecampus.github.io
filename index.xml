@@ -241,8 +241,13 @@ p:not(:first-child) {
       <pubDate>Fri, 30 Oct 2015 10:21:57 +0800</pubDate>
       
       <guid>http://onecampus.github.io/browsersync%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</guid>
-      <description>&lt;p&gt;##browser-sync基础配置
-&amp;gt; &lt;a href=&#34;http://www.browsersync.io/&#34;&gt;browser-sync&lt;/a&gt;是个啥？&lt;/p&gt;
+      <description>
+
+&lt;h2 id=&#34;browser-sync基础配置:1ed05c9306fa0fc57aae4353611ca792&#34;&gt;browser-sync基础配置&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.browsersync.io/&#34;&gt;browser-sync&lt;/a&gt;是个啥？&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;browser-sync是一个前端辅助性插件，用于开发时自动刷新页面。&lt;/p&gt;
 
