@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://onecampus.github.io/</loc>
     <lastmod>2015-10-28T15:34:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>http://onecampus.github.io/%E6%A0%85%E6%A0%BC%E5%8C%96%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2015-10-28T15:34:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</loc>
+    <loc>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</loc>
     <lastmod>2015-10-25T15:55:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</loc>
+    <loc>http://onecampus.github.io/%E6%90%AD%E5%BB%BADNS%E6%9C%8D%E5%8A%A1%E5%99%A8%20by%20yunjiang/</loc>
     <lastmod>2015-09-29T15:34:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</loc>
+    <loc>http://onecampus.github.io/ngrok%20%E7%AE%80%E5%8D%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%20by%20june/</loc>
     <lastmod>2015-09-20T10:14:34+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</loc>
+    <loc>http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</loc>
     <lastmod>2015-09-11T16:00:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</loc>
+    <loc>http://onecampus.github.io/hugo%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%20by%20nekocode/</loc>
     <lastmod>2015-09-10T10:14:34+08:00</lastmod>
   </url>
   

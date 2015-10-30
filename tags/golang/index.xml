@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Onecampus T.D.</title>
-    <link>http://localhost:1313/tags/golang/</link>
+    <link>http://onecampus.github.io/tags/golang/</link>
     <description>Recent content in Golang on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 25 Oct 2015 15:55:29 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://onecampus.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>网页弹性按钮(纯css3) by zhou</title>
-      <link>http://localhost:1313/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</link>
+      <link>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</link>
       <pubDate>Sun, 25 Oct 2015 15:55:29 +0800</pubDate>
       
-      <guid>http://localhost:1313/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</guid>
+      <guid>http://onecampus.github.io/%E7%BD%91%E9%A1%B5%E5%BC%B9%E6%80%A7%E6%8C%89%E9%92%AE/</guid>
       <description>
 
 &lt;h2 id=&#34;网页中弹性按钮设计-纯css:e2661edcf3ad09a929f3c6c9ad328c35&#34;&gt;网页中弹性按钮设计(纯CSS)&lt;/h2&gt;
@@ -150,10 +150,10 @@
     
     <item>
       <title>Android右滑关闭当前页面实现 by fostion</title>
-      <link>http://localhost:1313/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</link>
+      <link>http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</link>
       <pubDate>Fri, 11 Sep 2015 16:00:16 +0800</pubDate>
       
-      <guid>http://localhost:1313/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</guid>
+      <guid>http://onecampus.github.io/Android%E5%8F%B3%E6%BB%91%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E5%AE%9E%E7%8E%B0%20by%20fostion/</guid>
       <description>
 
 &lt;h2 id=&#34;viewdraghelper介绍:12e2a8ca259c2875a3b1a12e6233ec76&#34;&gt;ViewDragHelper介绍&lt;/h2&gt;
