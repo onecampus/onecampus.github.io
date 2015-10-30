@@ -6,8 +6,284 @@
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Oct 2015 15:34:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2015 11:57:29 +0800</lastBuildDate>
     <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>css3属性选择器、伪类一览</title>
+      <link>http://onecampus.github.io/css3%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E3%80%81%E4%BC%AA%E7%B1%BB%E4%B8%80%E8%A7%88/</link>
+      <pubDate>Fri, 30 Oct 2015 11:57:29 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/css3%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E3%80%81%E4%BC%AA%E7%B1%BB%E4%B8%80%E8%A7%88/</guid>
+      <description>
+
+&lt;h2 id=&#34;css3属性选择器-伪类一览:eb47591866dfe110313e76e2d9706760&#34;&gt;css3属性选择器、伪类一览&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注： 部分例子代码使用scss（啥？看不懂scss？拜拜）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;属性选择器&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1.*开始子串属性选择器*：&lt;code&gt;E[attr^=&#39;value&#39;]{}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a[title^=&#39;website&#39;] {}
+&amp;lt;p&amp;gt;one&amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; title=&amp;quot;website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;two&amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; title=&amp;quot;anther website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释：该规则会匹配第一个段落中的a元素，因为它的title属性字符串以单词website开头。而第二个段落a的title虽包含了website但由于不是开头单词，所以不会匹配。&lt;/p&gt;
+
+&lt;p&gt;2.*结束子串属性选择器*：&lt;code&gt;E[attr$=&#39;value&#39;]{}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a {
+  &amp;amp;[href$=&#39;.doc&#39;] {
+    background: #fff;
+  }
+  &amp;amp;[href$=&#39;.pdf&#39;] {
+    background: red;
+  }
+}
+&amp;lt;a href=&#39;http://onecampus.github.io/example.doc&#39;&amp;gt;i am a doc&amp;lt;/a&amp;gt;
+&amp;lt;a href=&#39;http://onecampus.github.io/example.pdf&#39;&amp;gt;i am a pdf&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释：该规则会匹配以相应单词结尾的元素段落,所以.doc规则会匹配第一个元素a,而.pdf会匹配第二个元素a。&lt;/p&gt;
+
+&lt;p&gt;3.*任意子串属性值选择器*：&lt;code&gt;E[attr*=&#39;value&#39;]{}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a[title*=&#39;website&#39;] {}
+&amp;lt;p&amp;gt;one&amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; title=&amp;quot;website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;two&amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; title=&amp;quot;anther website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释：该规则会匹配两个段落元素里面的a元素，因为他们的title都包含有website&lt;/p&gt;
+
+&lt;p&gt;4.*多属性选择器*：&lt;code&gt;E[attr^=&#39;value&#39;][attr$=&#39;value&#39;] {}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a[href*=&#39;http://&#39;][href$=&#39;.com&#39;] {}
+&amp;lt;p&amp;gt;one&amp;lt;a href=&amp;quot;http://www.baidu.com&amp;quot; title=&amp;quot;website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;two&amp;lt;a href=&amp;quot;www.baidu.com&amp;quot; title=&amp;quot;anther website&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释：该规则的意思是匹配属性值href以http://开头且以.com结尾的元素，故第一个元素a会被匹配&lt;/p&gt;
+
+&lt;p&gt;5.*普通兄弟连接符*： &lt;code&gt;E ~ F {}&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;h2 ~ p {
+  font-weight: bolder;
+}
+&amp;lt;p&amp;gt;i am p1&amp;lt;/p&amp;gt;
+&amp;lt;h2&amp;gt;today is good&amp;lt;/h2&amp;gt;
+&amp;lt;p&amp;gt;i am p2&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;i am p3&amp;lt;/p&amp;gt;
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;i am p4&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释：该规则匹配同一层级的位于h2元素之后的任意p元素，所以p2,p3字体会变粗。而p1不在h2之后，p4和h2不在同一层级，所以不会有变化&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;特别提示： 属性选择器对属性的大小写不敏感，而且所有主流的浏览器都兼容，可以放心大胆的使用。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;伪类&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;1.nth-of-type与nth-child&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;* {
+  &amp;amp;:nth-of-type(2) {
+    color: red;
+  }
+  &amp;amp;:nth-child(2) {
+    color: white;
+  }
+}
+&amp;lt;div&amp;gt;
+  &amp;lt;h2&amp;gt;who win?&amp;lt;/h2&amp;gt;
+  &amp;lt;p&amp;gt;exo&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;or&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;tfb&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释： 两者基本用法一致，唯一不同的地方在于元素个数不受或受元素类型影响。例子中第二个p元素文字变红，因为nth-of-type忽略了h2进行计算，而第一个元素p文字变白，因为nth-child从h2开始计算。&lt;/p&gt;
+
+&lt;p&gt;一些补充用法：&lt;br /&gt;
+匹配基数项：&lt;code&gt;E:nth-child(odd) {}&lt;/code&gt;&lt;br /&gt;
+匹配偶数项：&lt;code&gt;E:nth-child(even) {}&lt;/code&gt;&lt;br /&gt;
+自定义,n从1开始: &lt;code&gt;E:nth-child(2n) {}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;2.nth-last-of-type与nth-last-child&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;解释: 这两个是从元素的末尾开始计算，其余用法与用例1中一致。这里列举一个实用的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//问题：假设想让最后两行的元素p文字变成红色应该怎么写？
+&amp;lt;div&amp;gt;
+  &amp;lt;p&amp;gt;hahaha&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;exo&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;or&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;tfb&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+//解答(加一个-号使得nth-last-of-type文档树计算向前走（什么意思？n代入1，2，3，4算一算就知道了）)
+p:nth-last-of-type(-n+2) {
+    color: red;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;3.first-child、first-of-type、last-child、last-of-type&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;first-of-type： 匹配父元素的基于类型的第一个子元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;*:first-of-type {
+  color: red;
+}
+&amp;lt;div&amp;gt;
+  &amp;lt;h2&amp;gt;who win?&amp;lt;/h2&amp;gt;
+  &amp;lt;p&amp;gt;exo&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;or&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;tfb&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释： 第一个p元素文字和h2元素都会变红&lt;/p&gt;
+
+&lt;p&gt;first-child： 匹配父元素的基于结构上的的第一个子元素&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;*:first-of-type {
+  color: red;
+}
+&amp;lt;div&amp;gt;
+  &amp;lt;h2&amp;gt;who win?&amp;lt;/h2&amp;gt;
+  &amp;lt;p&amp;gt;exo&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;or&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;tfb&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释： h2元素会变红，p元素无变化&lt;/p&gt;
+
+&lt;p&gt;last-child、last-of-type指的是父元素的最后一个子元素，其他与上述两者一致。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;4.only-child、only-of-child&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;only-child: 匹配父元素内有且只有一个子元素项(结构上数目1)&lt;br /&gt;
+only-of-child： 匹配父元素内有且只有一个不同类型的子元素项(类型上数目1)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;p {
+  &amp;amp;:only-child {
+    color: red;
+  }
+  &amp;amp;:only-of-type {
+    font-size: 50px;
+  }
+}
+&amp;lt;p&amp;gt;i am p1&amp;lt;/p&amp;gt;
+&amp;lt;span&amp;gt;i am span&amp;lt;/span&amp;gt;
+&amp;lt;span&amp;gt;i am span too&amp;lt;/span&amp;gt;
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;i am p2&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;表现： p2文字会变为红色和50px，p1会变为50px，其余无变化&lt;br /&gt;
+解释：由于p1在该相同层级内类型唯一，所以only-of-type会起作用，而该层级元素个数不为1，所以p1文字大小无变化。p2在层级中无论数目或类型都唯一，所以对only-child与only-of-type都有响应。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;5.target，打开内部链接伪类&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div {
+  display: none;
+  &amp;amp;:target {
+   display: block;
+  }
+}
+&amp;lt;a href=&#39;#demo&#39;&amp;gt;clickme&amp;lt;/a&amp;gt;
+&amp;lt;div id=&#39;demo&#39;&amp;gt;haha&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释： 点击clickme按钮之后haha会出现，该效果可以制作不需要依赖js的tag切换效果。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;6.empty 空元素伪类&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div:empty {
+  background: red;
+  width: 100px;
+  height: 100px;
+}
+&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;123456&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释: 该规则只会匹配第一个div元素&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;7.E: not(F) { } 否定元素伪类&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//问题： 除了第一个p元素之外其他p元素文字要变成红色怎么玩？
+&amp;lt;div&amp;gt;
+  &amp;lt;p&amp;gt;i am p1&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;i am p2&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;i am p3&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;i am p4&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;i am p5&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+//解答： so easy,
+p:not(:first-child) {
+  color: red;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;特别提示： 伪类webkit,firefox,opera和ie9+浏览器兼容（啥？旧版ie也想用？可以的，不过需要依赖js的补丁包，这里就不做介绍了）&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>browsersync基础教程</title>
+      <link>http://onecampus.github.io/browsersync%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Fri, 30 Oct 2015 10:21:57 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/browsersync%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</guid>
+      <description>&lt;p&gt;##browser-sync基础配置
+&amp;gt; &lt;a href=&#34;http://www.browsersync.io/&#34;&gt;browser-sync&lt;/a&gt;是个啥？&lt;/p&gt;
+
+&lt;p&gt;browser-sync是一个前端辅助性插件，用于开发时自动刷新页面。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;这玩意有什么优势？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不需要写任何代码，直接几个命令就能控制监听自动刷新，很爽有木有？&lt;/li&gt;
+&lt;li&gt;响应式开发时可能需要在多种设备或者屏幕上测试，browser-sync能一次性帮你刷新所有页面，简直是懒人必备啊（啥？什么是响应式？拜拜）。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;how to install?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;需要npm环境，这个下载安装&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;nodejs&lt;/a&gt;之后就有了&lt;/li&gt;
+&lt;li&gt;npm install -g browser-sync&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;问： 我已经有个服务器eg: localhost:4200，我想用browser-sync来监听文件的变化该怎么做？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;开启你的服务器并确保ip不是3000(3000被占用的话browser-sync会开启失败)&lt;/li&gt;
+&lt;li&gt;browser-sync start &amp;ndash;proxy &amp;ldquo;localhost:4200&amp;rdquo; &amp;ndash;files &amp;ldquo;js/.js,css/.css&amp;rdquo;&lt;br /&gt;
+&amp;ndash;proxy: 启动一个内置的服务器&lt;br /&gt;
+&amp;ndash;files: 要监听变化的对象（如果实在不知道要监听什么，可以这样写**,不过不推荐这么做..）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;个人感觉browser-sync美中不足的地方&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;监听对象是css文件自动注入不刷新页面的机制才会生效，但监听对象是诸如scss一类文件的时候注入就不生效了，页面还是会刷新。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>栅格化设计 by mj</title>

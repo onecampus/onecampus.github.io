@@ -1,0 +1,105 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.14" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> browsersync基础教程 &middot; Onecampus T.D. </title>
+
+  
+  <link rel="stylesheet" href="http://onecampus.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/syntax.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
+  
+  <link rel="stylesheet" href="/highlight/styles/androidstudio.css">
+  <script src="/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://onecampus.github.io/"><h1>Onecampus T.D.</h1></a>
+      <p class="lead">
+       I am the bone of my sword. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="https://github.com/onecampus"> Organization </a></li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>browsersync基础教程</h1>
+			  <span class="post-date">Fri, Oct 30, 2015</span>
+			      <p>##browser-sync基础配置
+&gt; <a href="http://www.browsersync.io/">browser-sync</a>是个啥？</p>
+
+<p>browser-sync是一个前端辅助性插件，用于开发时自动刷新页面。</p>
+
+<blockquote>
+<p>这玩意有什么优势？</p>
+</blockquote>
+
+<ol>
+<li>不需要写任何代码，直接几个命令就能控制监听自动刷新，很爽有木有？</li>
+<li>响应式开发时可能需要在多种设备或者屏幕上测试，browser-sync能一次性帮你刷新所有页面，简直是懒人必备啊（啥？什么是响应式？拜拜）。</li>
+</ol>
+
+<blockquote>
+<p>how to install?</p>
+</blockquote>
+
+<ol>
+<li>需要npm环境，这个下载安装<a href="https://nodejs.org/en/">nodejs</a>之后就有了</li>
+<li>npm install -g browser-sync</li>
+</ol>
+
+<blockquote>
+<p>问： 我已经有个服务器eg: localhost:4200，我想用browser-sync来监听文件的变化该怎么做？</p>
+</blockquote>
+
+<ol>
+<li>开启你的服务器并确保ip不是3000(3000被占用的话browser-sync会开启失败)</li>
+<li>browser-sync start &ndash;proxy &ldquo;localhost:4200&rdquo; &ndash;files &ldquo;js/.js,css/.css&rdquo;<br />
+&ndash;proxy: 启动一个内置的服务器<br />
+&ndash;files: 要监听变化的对象（如果实在不知道要监听什么，可以这样写**,不过不推荐这么做..）</li>
+</ol>
+
+<blockquote>
+<p>个人感觉browser-sync美中不足的地方</p>
+</blockquote>
+
+<ol>
+<li>监听对象是css文件自动注入不刷新页面的机制才会生效，但监听对象是诸如scss一类文件的时候注入就不生效了，页面还是会刷新。</li>
+</ol>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
