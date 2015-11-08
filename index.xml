@@ -6,8 +6,253 @@
     <description>Recent content on Onecampus T.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Oct 2015 11:57:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2015 18:34:27 +0800</lastBuildDate>
     <atom:link href="http://onecampus.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>使用Capistrano部署Rails应用</title>
+      <link>http://onecampus.github.io/use-capistrano-to-deploy-rails-application/</link>
+      <pubDate>Sun, 08 Nov 2015 18:34:27 +0800</pubDate>
+      
+      <guid>http://onecampus.github.io/use-capistrano-to-deploy-rails-application/</guid>
+      <description>
+
+&lt;p&gt;Capistrano是一个远程服务器自动化工具，使用Ruby编写。&lt;/p&gt;
+
+&lt;p&gt;它是一个通用类型的工具，并非专为Rails设计，但对Rails支持很好。&lt;/p&gt;
+
+&lt;h2 id=&#34;优点:a5c196b499269ed4a24884aad9a7b394&#34;&gt;优点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;无需对服务器进行任何配置&lt;/li&gt;
+&lt;li&gt;一键部署、回滚&lt;/li&gt;
+&lt;li&gt;易于扩展，可方便地添加自定义任务&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;基本原理:a5c196b499269ed4a24884aad9a7b394&#34;&gt;基本原理&lt;/h2&gt;
+
+&lt;p&gt;预先定义一系列任务（本质上都是shell脚本），然后通过ssh在远程服务器上执行任务。&lt;/p&gt;
+
+&lt;p&gt;使用钩子定义任务的执行时间、顺序。&lt;/p&gt;
+
+&lt;p&gt;可创建多套部署方案，capistrano中称为stage，每个stage有一个单独的配置文件。&lt;/p&gt;
+
+&lt;h2 id=&#34;基本流程:a5c196b499269ed4a24884aad9a7b394&#34;&gt;基本流程&lt;/h2&gt;
+
+&lt;p&gt;假定服务器上使用Nginx + Passenger + Rvm运行Rails应用，具体安装配置参见各软件文档。&lt;/p&gt;
+
+&lt;p&gt;部署Rails应用的基本流程是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将代码推送到远程仓库&lt;/li&gt;
+&lt;li&gt;本地执行capistrano部署命令&lt;/li&gt;
+&lt;li&gt;capistrano通过ssh连接远程服务器，从远程代码仓库拉取代码，然后执行安装依赖、编译资源文件、迁移数据库等任务&lt;/li&gt;
+&lt;li&gt;重启passenger使新代码生效&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;基本要求:a5c196b499269ed4a24884aad9a7b394&#34;&gt;基本要求&lt;/h2&gt;
+
+&lt;h3 id=&#34;服务器:a5c196b499269ed4a24884aad9a7b394&#34;&gt;服务器&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有一个部署用的用户，该用户应对部署目录有读写权限，且有执行rvm, passenger-config等命令的权限&lt;/li&gt;
+&lt;li&gt;可连接远程代码仓库（不要求部署用户有拉取权限）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;本地:a5c196b499269ed4a24884aad9a7b394&#34;&gt;本地&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;能通过ssh密钥以部署用户身份登录远程服务器&lt;/li&gt;
+&lt;li&gt;对远程代码仓库有拉取权限&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;安装:a5c196b499269ed4a24884aad9a7b394&#34;&gt;安装&lt;/h2&gt;
+
+&lt;p&gt;只需在本地安装capistrano&lt;/p&gt;
+
+&lt;p&gt;在项目的Gemfile中加入以下内容：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;group :development do
+  # deploy
+  gem &#39;capistrano-rails&#39;, &#39;~&amp;gt; 1.1.5&#39;
+  gem &#39;capistrano-rvm&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行&lt;code&gt;bundle install&lt;/code&gt;安装新依赖&lt;/p&gt;
+
+&lt;h2 id=&#34;本地初始化:a5c196b499269ed4a24884aad9a7b394&#34;&gt;本地初始化&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;bundle exec cap install STAGES=development,production
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;初始化后生成以下文件结构&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;├── Capfile                # 控制插件、任务的加载
+├── config
+│   ├── deploy             # 不同stage的配置文件
+│   │   ├── development.rb
+│   │   └── production.rb
+│   └── deploy.rb          # 全局配置，各stage共用
+└── lib
+    └── capistrano
+            └── tasks      # 自定义任务的存放位置
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;若初始化时不指定STAGES，默认创建staging, production两个stage。&lt;/p&gt;
+
+&lt;h2 id=&#34;配置:a5c196b499269ed4a24884aad9a7b394&#34;&gt;配置&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;加载rails, rvm插件&lt;/p&gt;
+
+&lt;p&gt;在&lt;code&gt;Capfile&lt;/code&gt;中加入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;capistrano/rails&#39;
+require &#39;capistrano/rvm&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改全局配置config/deploy.rb&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# 应用名称
+set :application, &#39;liveneeq&#39;
+
+# 远程仓库地址
+set :repo_url, &#39;git@git.thecampus.cc:yang/liveneeq2.git&#39;
+
+# 服务器端部署目录。可使用fetch(:xxx)获取已设置的变量
+set :deploy_to, &amp;quot;/data/app/www/#{fetch(:application)}&amp;quot;
+
+# 在不同版本间共享的文件
+set :linked_files, fetch(:linked_files, []).push(&#39;config/database.yml&#39;, &#39;config/secrets.yml&#39;)
+
+# 在不同版本间共享的目录
+set :linked_dirs, fetch(:linked_dirs, []).push(&#39;log&#39;, &#39;tmp/pids&#39;, &#39;tmp/cache&#39;, &#39;tmp/sockets&#39;, 
+    &#39;vendor/bundle&#39;, &#39;public/system&#39;, &#39;public/uploads&#39;)
+
+# ruby版本
+set :rvm_ruby_version, &#39;2.2.2&#39;
+
+# 默认Rails.env会等于stage的名称而非始终production，导致代码中判断模式错误。此处强制所有stage都为production模式
+set :stage, :production
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;修改各个stage的配置&lt;/p&gt;
+
+&lt;p&gt;我们使用development, production两个stage，development部署dev分支到开发/测试服务器，production部署master分支到生产服务器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy/development.rb:
+
+# 远程服务器的地址、用户、角色
+# 可配置多台服务器
+server &#39;119.29.107.35&#39;, user: &#39;ubuntu&#39;, roles: %w(app db web)
+
+# 要部署的分支
+set :branch, &#39;dev&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy/production.rb
+
+# 远程服务器的地址、用户、角色
+# 可配置多台服务器
+server &#39;119.29.107.35&#39;, user: &#39;ubuntu&#39;, roles: %w(app db web)
+
+# 要部署的分支
+set :branch, &#39;master&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;服务器端初始化:a5c196b499269ed4a24884aad9a7b394&#34;&gt;服务器端初始化&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建部署目录&lt;/li&gt;
+&lt;li&gt;在部署目录下创建shared子目录，里面添加config/deploy.rb中配置的linked_files&lt;/li&gt;
+&lt;li&gt;创建数据库&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;capistrano命令:a5c196b499269ed4a24884aad9a7b394&#34;&gt;Capistrano命令&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# 查看可用任务
+bundle exec cap -T
+
+# 部署
+bundle exec cap STAGE_NAME deploy
+
+# 回滚
+bundle exec cap STAGE_NAME deploy:rollback
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;执行任何任务都需要指定stage名称&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;bundle exec&lt;/code&gt;执行cap命令以避免不可预知的风险&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;自定义任务:a5c196b499269ed4a24884aad9a7b394&#34;&gt;自定义任务&lt;/h2&gt;
+
+&lt;h3 id=&#34;集成bower:a5c196b499269ed4a24884aad9a7b394&#34;&gt;集成bower&lt;/h3&gt;
+
+&lt;p&gt;若项目中使用bower管理前端依赖，需自行添加任务安装bower依赖&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code&gt;lib/capistrano/tasks/bower.rake&lt;/code&gt;文件，内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;namespace :bower do
+  desc &#39;Install bower dependencies&#39;
+  task :install do
+    on roles(:web) do |host|
+      within release_path do
+        # 安装依赖
+        execute :bower, :install
+        # 清理无用包
+        execute :bower, :prune
+        info &amp;quot;Bower dependencies installed successfully on #{host}&amp;quot;
+      end
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在&lt;code&gt;config/deploy.rb&lt;/code&gt;末尾加入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;before :&#39;deploy:compile_assets&#39;, :&#39;bower:install&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;部署后重启passenger:a5c196b499269ed4a24884aad9a7b394&#34;&gt;部署后重启passenger&lt;/h3&gt;
+
+&lt;p&gt;部署新版本后需要重启passenger才能使新代码生效，可通过&lt;a href=&#34;https://github.com/capistrano/passenger&#34;&gt;capistrano-passenger&lt;/a&gt;插件实现部署完成后自动重启，也可自行添加一个重启任务：&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code&gt;lib/capistrano/tasks/restart.rb&lt;/code&gt;，内容如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;namespace :passenger do
+  desc &#39;Restart passenger app&#39;
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5, limit: 2 do |host|
+      # 若使用的是passenger企业版，可添加参数--rolling-restart以实现无缝重启
+      execute :&#39;passenger-config&#39;, &#39;restart-app&#39;, fetch(:deploy_to), &#39;--ignore-app-not-running&#39;
+      info &amp;quot;Restart passenger successfully on #{host}&amp;quot;
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在&lt;code&gt;conig/deploy.rb&lt;/code&gt;末尾加入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;after :&#39;deploy:publishing&#39;, :&#39;passenger:restart&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;不足之处:a5c196b499269ed4a24884aad9a7b394&#34;&gt;不足之处&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;非完全自动化，只能说是半自动，因为需要本地执行部署命令&lt;/li&gt;
+&lt;li&gt;完全依赖本地环境，配置在本地，执行命令在本地，而且要求本地用户能ssh登录服务器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;曾经使用git hook + shell脚本实现过一种部署方案，指定的分支有更新（主动推送到远程仓库或在GitLab上接受合并请求）时就自动部署。&lt;/p&gt;
+
+&lt;p&gt;完全自动化、完全不依赖本地环境，但服务器端的配置略麻烦。&lt;/p&gt;
+
+&lt;p&gt;两种方案各有优劣，或许结合一下会更好？&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>css3属性选择器、伪类一览 by dongyu</title>
@@ -778,12 +1023,12 @@ title = &amp;quot;Onecampus T.D.&amp;quot;
 theme = &amp;quot;hyde&amp;quot;
 
 [params]
-	description = &amp;quot;I am the bone of my sword.&amp;quot;
-	#disqusShortname = &amp;quot;spf13&amp;quot;
+    description = &amp;quot;I am the bone of my sword.&amp;quot;
+    #disqusShortname = &amp;quot;spf13&amp;quot;
 
 [[menu.main]]
-	Name = &amp;quot;organization&amp;quot;
-	Url = &amp;quot;https://github.com/onecampus&amp;quot;
+    Name = &amp;quot;organization&amp;quot;
+    Url = &amp;quot;https://github.com/onecampus&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;

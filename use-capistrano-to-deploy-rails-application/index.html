@@ -1,0 +1,300 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.14" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> 使用Capistrano部署Rails应用 &middot; Onecampus T.D. </title>
+
+  
+  <link rel="stylesheet" href="http://onecampus.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/syntax.css">
+  <link rel="stylesheet" href="http://onecampus.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Onecampus T.D." />
+  
+  <link rel="stylesheet" href="/highlight/styles/androidstudio.css">
+  <script src="/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://onecampus.github.io/"><h1>Onecampus T.D.</h1></a>
+      <p class="lead">
+       I am the bone of my sword. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="https://github.com/onecampus"> Organization </a></li>
+      
+    </ul>
+
+    <p>&copy; 2015. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>使用Capistrano部署Rails应用</h1>
+			  <span class="post-date">Sun, Nov 8, 2015</span>
+			      
+
+<p>Capistrano是一个远程服务器自动化工具，使用Ruby编写。</p>
+
+<p>它是一个通用类型的工具，并非专为Rails设计，但对Rails支持很好。</p>
+
+<h2 id="优点:a5c196b499269ed4a24884aad9a7b394">优点</h2>
+
+<ul>
+<li>无需对服务器进行任何配置</li>
+<li>一键部署、回滚</li>
+<li>易于扩展，可方便地添加自定义任务</li>
+</ul>
+
+<h2 id="基本原理:a5c196b499269ed4a24884aad9a7b394">基本原理</h2>
+
+<p>预先定义一系列任务（本质上都是shell脚本），然后通过ssh在远程服务器上执行任务。</p>
+
+<p>使用钩子定义任务的执行时间、顺序。</p>
+
+<p>可创建多套部署方案，capistrano中称为stage，每个stage有一个单独的配置文件。</p>
+
+<h2 id="基本流程:a5c196b499269ed4a24884aad9a7b394">基本流程</h2>
+
+<p>假定服务器上使用Nginx + Passenger + Rvm运行Rails应用，具体安装配置参见各软件文档。</p>
+
+<p>部署Rails应用的基本流程是：</p>
+
+<ol>
+<li>将代码推送到远程仓库</li>
+<li>本地执行capistrano部署命令</li>
+<li>capistrano通过ssh连接远程服务器，从远程代码仓库拉取代码，然后执行安装依赖、编译资源文件、迁移数据库等任务</li>
+<li>重启passenger使新代码生效</li>
+</ol>
+
+<h2 id="基本要求:a5c196b499269ed4a24884aad9a7b394">基本要求</h2>
+
+<h3 id="服务器:a5c196b499269ed4a24884aad9a7b394">服务器</h3>
+
+<ul>
+<li>有一个部署用的用户，该用户应对部署目录有读写权限，且有执行rvm, passenger-config等命令的权限</li>
+<li>可连接远程代码仓库（不要求部署用户有拉取权限）</li>
+</ul>
+
+<h3 id="本地:a5c196b499269ed4a24884aad9a7b394">本地</h3>
+
+<ul>
+<li>能通过ssh密钥以部署用户身份登录远程服务器</li>
+<li>对远程代码仓库有拉取权限</li>
+</ul>
+
+<h2 id="安装:a5c196b499269ed4a24884aad9a7b394">安装</h2>
+
+<p>只需在本地安装capistrano</p>
+
+<p>在项目的Gemfile中加入以下内容：</p>
+
+<pre><code class="language-ruby">group :development do
+  # deploy
+  gem 'capistrano-rails', '~&gt; 1.1.5'
+  gem 'capistrano-rvm'
+end
+</code></pre>
+
+<p>执行<code>bundle install</code>安装新依赖</p>
+
+<h2 id="本地初始化:a5c196b499269ed4a24884aad9a7b394">本地初始化</h2>
+
+<pre><code class="language-shell">bundle exec cap install STAGES=development,production
+</code></pre>
+
+<p>初始化后生成以下文件结构</p>
+
+<pre><code>├── Capfile                # 控制插件、任务的加载
+├── config
+│   ├── deploy             # 不同stage的配置文件
+│   │   ├── development.rb
+│   │   └── production.rb
+│   └── deploy.rb          # 全局配置，各stage共用
+└── lib
+    └── capistrano
+            └── tasks      # 自定义任务的存放位置
+</code></pre>
+
+<p>若初始化时不指定STAGES，默认创建staging, production两个stage。</p>
+
+<h2 id="配置:a5c196b499269ed4a24884aad9a7b394">配置</h2>
+
+<ol>
+<li><p>加载rails, rvm插件</p>
+
+<p>在<code>Capfile</code>中加入</p>
+
+<pre><code class="language-ruby">require 'capistrano/rails'
+require 'capistrano/rvm'
+</code></pre></li>
+
+<li><p>修改全局配置config/deploy.rb</p>
+
+<pre><code class="language-ruby"># 应用名称
+set :application, 'liveneeq'
+
+# 远程仓库地址
+set :repo_url, 'git@git.thecampus.cc:yang/liveneeq2.git'
+
+# 服务器端部署目录。可使用fetch(:xxx)获取已设置的变量
+set :deploy_to, &quot;/data/app/www/#{fetch(:application)}&quot;
+
+# 在不同版本间共享的文件
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+
+# 在不同版本间共享的目录
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 
+    'vendor/bundle', 'public/system', 'public/uploads')
+
+# ruby版本
+set :rvm_ruby_version, '2.2.2'
+
+# 默认Rails.env会等于stage的名称而非始终production，导致代码中判断模式错误。此处强制所有stage都为production模式
+set :stage, :production
+</code></pre></li>
+
+<li><p>修改各个stage的配置</p>
+
+<p>我们使用development, production两个stage，development部署dev分支到开发/测试服务器，production部署master分支到生产服务器</p>
+
+<pre><code class="language-ruby"># config/deploy/development.rb:
+
+# 远程服务器的地址、用户、角色
+# 可配置多台服务器
+server '119.29.107.35', user: 'ubuntu', roles: %w(app db web)
+
+# 要部署的分支
+set :branch, 'dev'
+</code></pre>
+
+<pre><code class="language-ruby"># config/deploy/production.rb
+
+# 远程服务器的地址、用户、角色
+# 可配置多台服务器
+server '119.29.107.35', user: 'ubuntu', roles: %w(app db web)
+
+# 要部署的分支
+set :branch, 'master'
+</code></pre></li>
+</ol>
+
+<h2 id="服务器端初始化:a5c196b499269ed4a24884aad9a7b394">服务器端初始化</h2>
+
+<ol>
+<li>创建部署目录</li>
+<li>在部署目录下创建shared子目录，里面添加config/deploy.rb中配置的linked_files</li>
+<li>创建数据库</li>
+</ol>
+
+<h2 id="capistrano命令:a5c196b499269ed4a24884aad9a7b394">Capistrano命令</h2>
+
+<pre><code class="language-shell"># 查看可用任务
+bundle exec cap -T
+
+# 部署
+bundle exec cap STAGE_NAME deploy
+
+# 回滚
+bundle exec cap STAGE_NAME deploy:rollback
+</code></pre>
+
+<ul>
+<li>执行任何任务都需要指定stage名称</li>
+<li>使用<code>bundle exec</code>执行cap命令以避免不可预知的风险</li>
+</ul>
+
+<h2 id="自定义任务:a5c196b499269ed4a24884aad9a7b394">自定义任务</h2>
+
+<h3 id="集成bower:a5c196b499269ed4a24884aad9a7b394">集成bower</h3>
+
+<p>若项目中使用bower管理前端依赖，需自行添加任务安装bower依赖</p>
+
+<p>创建<code>lib/capistrano/tasks/bower.rake</code>文件，内容如下：</p>
+
+<pre><code class="language-ruby">namespace :bower do
+  desc 'Install bower dependencies'
+  task :install do
+    on roles(:web) do |host|
+      within release_path do
+        # 安装依赖
+        execute :bower, :install
+        # 清理无用包
+        execute :bower, :prune
+        info &quot;Bower dependencies installed successfully on #{host}&quot;
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>然后在<code>config/deploy.rb</code>末尾加入</p>
+
+<pre><code class="language-ruby">before :'deploy:compile_assets', :'bower:install'
+</code></pre>
+
+<h3 id="部署后重启passenger:a5c196b499269ed4a24884aad9a7b394">部署后重启passenger</h3>
+
+<p>部署新版本后需要重启passenger才能使新代码生效，可通过<a href="https://github.com/capistrano/passenger">capistrano-passenger</a>插件实现部署完成后自动重启，也可自行添加一个重启任务：</p>
+
+<p>创建<code>lib/capistrano/tasks/restart.rb</code>，内容如下：</p>
+
+<pre><code class="language-ruby">namespace :passenger do
+  desc 'Restart passenger app'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5, limit: 2 do |host|
+      # 若使用的是passenger企业版，可添加参数--rolling-restart以实现无缝重启
+      execute :'passenger-config', 'restart-app', fetch(:deploy_to), '--ignore-app-not-running'
+      info &quot;Restart passenger successfully on #{host}&quot;
+    end
+  end
+end
+</code></pre>
+
+<p>然后在<code>conig/deploy.rb</code>末尾加入</p>
+
+<pre><code class="language-ruby">after :'deploy:publishing', :'passenger:restart'
+</code></pre>
+
+<h2 id="不足之处:a5c196b499269ed4a24884aad9a7b394">不足之处</h2>
+
+<ol>
+<li>非完全自动化，只能说是半自动，因为需要本地执行部署命令</li>
+<li>完全依赖本地环境，配置在本地，执行命令在本地，而且要求本地用户能ssh登录服务器</li>
+</ol>
+
+<p>曾经使用git hook + shell脚本实现过一种部署方案，指定的分支有更新（主动推送到远程仓库或在GitLab上接受合并请求）时就自动部署。</p>
+
+<p>完全自动化、完全不依赖本地环境，但服务器端的配置略麻烦。</p>
+
+<p>两种方案各有优劣，或许结合一下会更好？</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
