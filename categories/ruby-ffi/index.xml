@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby Ffi on Onecampus T.D.</title>
+    <link>http://onecampus.github.io/categories/ruby-ffi/</link>
+    <description>Recent content in Ruby Ffi on Onecampus T.D.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 08 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://onecampus.github.io/categories/ruby-ffi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Simple ruby-ffi Demo by yang</title>
+      <link>http://onecampus.github.io/simple-ruby-ffi-demo/</link>
+      <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://onecampus.github.io/simple-ruby-ffi-demo/</guid>
+      <description>
+
+&lt;h2 id=&#34;simple-ruby-ffi-demo:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Simple ruby-ffi Demo&lt;/h2&gt;
+
+&lt;p&gt;It is a demo use ruby-ffi to call c code. Only tested it on ubuntu(15.04). The &lt;code&gt;libcal&lt;/code&gt; just calculate the sum of two integer number. You can see all of the code &lt;a href=&#34;https://github.com/FlowerWrong/ffi-demos&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;steps:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Steps&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;write the &lt;code&gt;cal&lt;/code&gt; lib code&lt;/li&gt;
+&lt;li&gt;generate .so shared lib&lt;/li&gt;
+&lt;li&gt;write test for this .so shared lib&lt;/li&gt;
+&lt;li&gt;write ruby file with ruby-ffi&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;generate-so-shared-lib:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Generate .so shared lib&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// cal.h
+int sum(int a, int b);
+
+
+// cal.c
+#include &amp;quot;cal.h&amp;quot;
+
+int sum(int a, int b) {
+  return a + b;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gcc -fPIC -shared -o libcal.so cal.c
+sudo mv cal.h /usr/local/include
+sudo mv libcal.so /usr/local/lib
+sudo chmod 0755 /usr/local/lib/libcal.so
+
+sudo ldconfig
+ldconfig -p | grep cal
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;test-it-in-main-function:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Test it in main function&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// main.c
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;quot;cal.h&amp;quot;
+
+int main(int argc, char const *argv[]) {
+  int total;
+  total = sum(1, 4);
+  printf(&amp;quot;sum is %d\n&amp;quot;, total);
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gcc -Wall -o main main.c -I/usr/local/include -L/usr/local/lib -lcal
+ldd main
+./main
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;ruby-ffi:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Ruby ffi&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gem install ffi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;ffi&#39;
+
+module MyCal
+  extend FFI::Library
+  ffi_lib &#39;c&#39; # use libc
+  attach_function :puts, [:string], :int # puts function is from libc
+
+  ffi_lib &#39;cal&#39; # use libcal write by myself
+  attach_function :sum, [:int, :int], :int # sum function is from libcal
+end
+
+MyCal.puts &#39;I am using libcal write by myself.&#39;
+total = MyCal.sum(1, 3)
+p &amp;quot;sum 1 and 3 is #{total}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ruby cal.rb # =&amp;gt; &amp;quot;sum 1 and 3 is 4&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;todo:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Todo&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[ ] &lt;a href=&#34;https://github.com/nodejs/http-parser&#34;&gt;write a http-parser ffi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;ruby-ffi-demo-repo-https-github-com-flowerwrong-ffi-demos:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;&lt;a href=&#34;https://github.com/FlowerWrong/ffi-demos&#34;&gt;ruby-ffi demo repo&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4 id=&#34;reference:0a9849f1b6bd31a113fb3fd1d79d1320&#34;&gt;Reference&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html&#34;&gt;shared-libraries-linux-gcc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ffi/ffi/wiki&#34;&gt;ruby-ffi wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
